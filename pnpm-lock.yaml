@@ -5,6 +5,7 @@ specifiers:
   '@nestjs/common': ^10.0.0
   '@nestjs/config': ^3.1.1
   '@nestjs/core': ^10.0.0
+  '@nestjs/mapped-types': '*'
   '@nestjs/mongoose': ^10.0.1
   '@nestjs/platform-express': ^10.0.0
   '@nestjs/schematics': ^10.0.0
@@ -20,6 +21,7 @@ specifiers:
   eslint-plugin-prettier: ^5.0.0
   jest: ^29.5.0
   joi: ^17.10.1
+  mongodb: ^6.1.0
   mongoose: ^7.5.2
   prettier: ^3.0.0
   reflect-metadata: ^0.1.13
@@ -36,9 +38,11 @@ dependencies:
   '@nestjs/common': 10.2.5_atc7tu2sld2m3nk4hmwkqn6qde
   '@nestjs/config': 3.1.1_3infzyxdfy5ogjlgysdffez4tm
   '@nestjs/core': 10.2.5_vwqu7ajot4ayxmc566shdsodx4
+  '@nestjs/mapped-types': 2.0.2_3infzyxdfy5ogjlgysdffez4tm
   '@nestjs/mongoose': 10.0.1_dk7sy7ga7xusc7nfyw2do4jo54
   '@nestjs/platform-express': 10.2.5_ull4wmvorwhjvheq4k2l7ntj3y
   joi: 17.10.1
+  mongodb: 6.1.0
   mongoose: 7.5.2
   reflect-metadata: 0.1.13
   rxjs: 7.8.1
@@ -879,7 +883,6 @@ packages:
     dependencies:
       sparse-bitfield: 3.0.3
     dev: false
-    optional: true
 
   /@nestjs/cli/10.1.17:
     resolution: {integrity: sha512-jUEnR2DgC15Op+IhcRWb6cyJrhec9CUQO+GtxCF2Dv9MwLcr4sTDq1UOkfs09HAhpuI8otgF2LoWGTlW3qRuqg==}
@@ -985,6 +988,23 @@ packages:
       uid: 2.0.2
     transitivePeerDependencies:
       - encoding
+
+  /@nestjs/mapped-types/2.0.2_3infzyxdfy5ogjlgysdffez4tm:
+    resolution: {integrity: sha512-V0izw6tWs6fTp9+KiiPUbGHWALy563Frn8X6Bm87ANLRuE46iuBMD5acKBDP5lKL/75QFvrzSJT7HkCbB0jTpg==}
+    peerDependencies:
+      '@nestjs/common': ^8.0.0 || ^9.0.0 || ^10.0.0
+      class-transformer: ^0.4.0 || ^0.5.0
+      class-validator: ^0.13.0 || ^0.14.0
+      reflect-metadata: ^0.1.12
+    peerDependenciesMeta:
+      class-transformer:
+        optional: true
+      class-validator:
+        optional: true
+    dependencies:
+      '@nestjs/common': 10.2.5_atc7tu2sld2m3nk4hmwkqn6qde
+      reflect-metadata: 0.1.13
+    dev: false
 
   /@nestjs/mongoose/10.0.1_dk7sy7ga7xusc7nfyw2do4jo54:
     resolution: {integrity: sha512-woUViG28WKf/kRiv6NFXu4Oc0DvAPeX4+fT4coDVt2OqndnfJZTXwkkys23uVsBpKSIflRyjPvmcVBHQvcunZw==}
@@ -1940,6 +1960,11 @@ packages:
   /bson/5.5.0:
     resolution: {integrity: sha512-B+QB4YmDx9RStKv8LLSl/aVIEV3nYJc3cJNNTK2Cd1TL+7P+cNpw9mAPeCgc5K+j01Dv6sxUzcITXDx7ZU3F0w==}
     engines: {node: '>=14.20.1'}
+    dev: false
+
+  /bson/6.1.0:
+    resolution: {integrity: sha512-yiQ3KxvpVoRpx1oD1uPz4Jit9tAVTJgjdmjDKtUErkOoL9VNoF8Dd58qtAOL5E40exx2jvAT9sqdRSK/r+SHlA==}
+    engines: {node: '>=16.20.1'}
     dev: false
 
   /buffer-from/1.1.2:
@@ -3948,7 +3973,6 @@ packages:
   /memory-pager/1.5.0:
     resolution: {integrity: sha512-ZS4Bp4r/Zoeq6+NLJpP+0Zzm0pR8whtGPf1XExKLJBAczGMnSi3It14OiNCStjQjM6NU1okjQGSxgEZN8eBYKg==}
     dev: false
-    optional: true
 
   /merge-descriptors/1.0.1:
     resolution: {integrity: sha512-cCi6g3/Zr1iqQi6ySbseM1Xvooa98N0w31jzUYrXPX2xqObmFGHJ0tQ5u74H3mVh7wLouTseZyYIq39g8cNp1w==}
@@ -4070,6 +4094,38 @@ packages:
       socks: 2.7.1
     optionalDependencies:
       '@mongodb-js/saslprep': 1.1.0
+    dev: false
+
+  /mongodb/6.1.0:
+    resolution: {integrity: sha512-AvzNY0zMkpothZ5mJAaIo2bGDjlJQqqAbn9fvtVgwIIUPEfdrqGxqNjjbuKyrgQxg2EvCmfWdjq+4uj96c0YPw==}
+    engines: {node: '>=16.20.1'}
+    peerDependencies:
+      '@aws-sdk/credential-providers': ^3.188.0
+      '@mongodb-js/zstd': ^1.1.0
+      gcp-metadata: ^5.2.0
+      kerberos: ^2.0.1
+      mongodb-client-encryption: '>=6.0.0 <7'
+      snappy: ^7.2.2
+      socks: ^2.7.1
+    peerDependenciesMeta:
+      '@aws-sdk/credential-providers':
+        optional: true
+      '@mongodb-js/zstd':
+        optional: true
+      gcp-metadata:
+        optional: true
+      kerberos:
+        optional: true
+      mongodb-client-encryption:
+        optional: true
+      snappy:
+        optional: true
+      socks:
+        optional: true
+    dependencies:
+      '@mongodb-js/saslprep': 1.1.0
+      bson: 6.1.0
+      mongodb-connection-string-url: 2.6.0
     dev: false
 
   /mongoose/7.5.2:
@@ -4799,7 +4855,6 @@ packages:
     dependencies:
       memory-pager: 1.5.0
     dev: false
-    optional: true
 
   /sprintf-js/1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
