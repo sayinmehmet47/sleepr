@@ -5,5 +5,6 @@
 - for validation joi (pnpm i joi)
 - connect to mongodb (brew services start mongodb-community@6.0 )
 - stop mongodb server (mongo) brew services stop mongodb-community@6.0
-
 - create an app(nest g app app-name)
+- create resource (nest g resource resource-name)
+- for logging using pino (pnpm i nestjs-pino pino-http)
