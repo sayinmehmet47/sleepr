@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { AuthModule } from './auth.module';
+
 import { Logger } from 'nestjs-pino';
 import { ValidationPipe } from '@nestjs/common';
 

@@ -7,6 +7,8 @@ services:
     command: npm run start:dev reservations
     ports:
       - 3000:3000
+    env_file:
+      - ./apps/reservations/.env
 
     volumes:
       - .:/usr/src/app
@@ -21,6 +23,8 @@ services:
       - 3001:3001
     volumes:
       - .:/usr/src/app
+    env_file:
+      - ./apps/auth/.env
 
   mongo:
     image: mongo:latest
