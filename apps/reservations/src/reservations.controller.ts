@@ -3,43 +3,47 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
+  UseGuards,
 } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
-import { UpdateReservationDto } from './reservations/dto/update-reservation.dto';
 import { CreateReservationDto } from './reservations/dto/create-reservation.dto';
+import { CurrentUser, JwtAuthGuard, UserDto } from '@app/common';
 
 @Controller('reservations')
 export class ReservationsController {
   constructor(private readonly reservationsService: ReservationsService) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  create(@Body() createReservationDto: CreateReservationDto) {
-    return this.reservationsService.create(createReservationDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.reservationsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.reservationsService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() UpdateReservationDto: UpdateReservationDto,
+  async create(
+    @Body() createReservationDto: CreateReservationDto,
+    @CurrentUser() user: UserDto,
   ) {
-    return this.reservationsService.update(id, UpdateReservationDto);
+    const _user = await this.reservationsService.create(
+      createReservationDto,
+      user._id,
+    );
+
+    return _user;
   }
 
+  @UseGuards(JwtAuthGuard)
+  @Get()
+  async findAll() {
+    return await this.reservationsService.findAll();
+  }
+
+  @UseGuards(JwtAuthGuard)
+  @Get(':id')
+  async findOne(@Param('id') id: string) {
+    return await this.reservationsService.findOne(id);
+  }
+
+  @UseGuards(JwtAuthGuard)
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.reservationsService.remove(id);
+  async remove(@Param('id') id: string) {
+    return await this.reservationsService.remove(id);
   }
 }
