@@ -12,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
       validationSchema: Joi.object({
         PORT: Joi.number().default(3003),
+        STRIPE_SECRET_KEY: Joi.string().required(),
       }),
     }),
   ],
