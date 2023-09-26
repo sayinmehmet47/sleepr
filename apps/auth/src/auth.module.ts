@@ -1,9 +1,8 @@
-import { UserDocument } from './users/models/user.schema';
 import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsersModule } from './users/users.module';
-import { DatabaseModule, LoggerModule } from '@app/common';
+import { DatabaseModule, LoggerModule, UserDocument } from '@app/common';
 import * as Joi from 'joi';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -27,7 +26,8 @@ import { JwtStrategy } from './strategies/jwt.strategy';
         MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION: Joi.string().required(),
-        PORT: Joi.number().default(3000),
+        HTTP_PORT: Joi.number().default(3001),
+        TCP_PORT: Joi.number().default(3002),
       }),
     }),
     JwtModule.registerAsync({
