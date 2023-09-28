@@ -15,18 +15,13 @@ export class PaymentsService {
   constructor(private readonly configService: ConfigService) {}
 
   // create payment intent
-  async createPaymentIntent({ amount, card }: CreateChargeDto) {
-    const paymentMethod = await this.stripe.paymentMethods.create({
-      type: 'card',
-      card,
-    });
-
+  async createPaymentIntent({ amount }: CreateChargeDto) {
     const paymentIntent = await this.stripe.paymentIntents.create({
       amount: amount * 100,
-      currency: 'usd',
-      payment_method: paymentMethod.id,
-      payment_method_types: ['card'],
       confirm: true,
+      currency: 'usd',
+      payment_method: 'pm_card_visa',
+      return_url: 'http://localhost:3000',
     });
 
     return paymentIntent;

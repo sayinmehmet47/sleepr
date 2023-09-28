@@ -16,5 +16,8 @@ async function bootstrap() {
   });
   app.useLogger(app.get(Logger));
   await app.startAllMicroservices();
+
+  const port = configService.get('PORT');
+  app.get(Logger).log(`Payments microservice is listening on port ${port}`);
 }
 bootstrap();
