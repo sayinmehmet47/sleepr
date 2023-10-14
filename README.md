@@ -13,3 +13,7 @@
 - build docker file(docker build ../../ -f Dockerfile -t sleepr_reservations)
 - run docker file(docker run -p 3000:3000 sleepr_reservations)
 - run the docker compose yaml file(docker-compose up)
+
+## Issues
+
+take a look on the authentication expirations
