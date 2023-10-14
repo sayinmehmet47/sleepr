@@ -12,6 +12,10 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true,
       validationSchema: Joi.object({
         PORT: Joi.number().default(3003),
+        SMTP_USER: Joi.string().required(),
+        GOOGLE_AUTH_CLIENT_ID: Joi.string().required(),
+        GOOGLE_AUTH_CLIENT_SECRET: Joi.string().required(),
+        GOOGLE_AUTH_REFRESH_TOKEN: Joi.string().required(),
       }),
     }),
   ],
