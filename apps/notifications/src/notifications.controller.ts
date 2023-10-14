@@ -8,7 +8,7 @@ export class NotificationsController {
 
   @EventPattern('notify_email')
   @UsePipes(new ValidationPipe())
-  async createNotification(@Payload() data: { email: string }) {
+  async createNotification(@Payload() data: { email: string; text: string }) {
     return this.notificationsService.notifyEmail(data);
   }
 }

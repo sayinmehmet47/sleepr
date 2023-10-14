@@ -18,13 +18,13 @@ export class NotificationsService {
     },
   });
 
-  async notifyEmail(data: { email: string }) {
+  async notifyEmail(data: { email: string; text: string }) {
     try {
       const response = await this.transporter.sendMail({
         from: this.configService.get<string>('SMTP_USER'),
         to: data.email,
-        subject: 'Test',
-        text: 'Test',
+        subject: 'Payment Notification',
+        text: data.text,
       });
       return response;
     } catch (error) {
