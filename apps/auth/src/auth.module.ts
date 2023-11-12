@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { UsersModule } from './users/users.module';
-import { DatabaseModule, LoggerModule, UserDocument } from '@app/common';
+import { DatabaseModule, LoggerModule, User } from '@app/common';
 import * as Joi from 'joi';
 import { JwtModule } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -14,16 +14,10 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     UsersModule,
     LoggerModule,
     DatabaseModule,
-    DatabaseModule.forFeature([
-      {
-        name: UserDocument.name,
-        schema: 'UserSchema',
-      },
-    ]),
+    DatabaseModule.forFeature([User]),
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({
-        MONGODB_URI: Joi.string().required(),
         JWT_SECRET: Joi.string().required(),
         JWT_EXPIRATION: Joi.string().required(),
         HTTP_PORT: Joi.number().default(3001),
