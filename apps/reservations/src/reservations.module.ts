@@ -2,18 +2,18 @@ import { Module } from '@nestjs/common';
 import * as Joi from 'joi';
 import { ReservationsService } from './reservations.service';
 import { ReservationsController } from './reservations.controller';
-import { DatabaseModule } from '@app/common';
+import { DatabaseModule, LoggerModule } from '@app/common';
 import { ReservationRepository } from './reservations.repository';
-import { Reservation } from './reservations/models';
-import { LoggerModule } from '@app/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
+import { Reservation } from './reservations/models';
 import { AUTH_SERVICE, PAYMENTS_SERVICE } from '@app/common/constants/services';
 
 @Module({
   imports: [
     DatabaseModule,
     DatabaseModule.forFeature([Reservation]),
+    LoggerModule,
     ConfigModule.forRoot({
       isGlobal: true,
       validationSchema: Joi.object({

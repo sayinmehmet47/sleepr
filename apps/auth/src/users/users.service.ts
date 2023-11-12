@@ -20,7 +20,9 @@ export class UsersService {
   }
 
   async getUser(getUserDto: GetUserDto) {
-    return await this.usersRepository.findOne(getUserDto);
+    return await this.usersRepository.findOne(getUserDto, {
+      roles: true,
+    });
   }
 
   async verifyUser(email: string, password: string) {

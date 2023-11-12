@@ -1,5 +1,3 @@
-
-
 - nest new project-name
 - nest generate library common(to share code between apps, it is monorepo)
 - for validation joi (pnpm i joi)
@@ -17,3 +15,9 @@
 ## Issues
 
 take a look on the authentication expirations
+
+- still struggling with this error
+
+```
+sleepr-reservations-1   | [Nest] 1163  - 11/12/2023, 5:48:21 PM   ERROR [ExceptionHandler] Nest can't resolve dependencies of the ReservationRepository (?, EntityManager). Please make sure that the argument ReservationModel at index [0] is available in the ReservationsModule context.
+```
