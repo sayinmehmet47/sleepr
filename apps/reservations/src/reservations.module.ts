@@ -3,11 +3,11 @@ import * as Joi from 'joi';
 import { ReservationsService } from './reservations.service';
 import { ReservationsController } from './reservations.controller';
 import { DatabaseModule, LoggerModule } from '@app/common';
-import { ReservationRepository } from './reservations.repository';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 import { Reservation } from './reservations/models';
 import { AUTH_SERVICE, PAYMENTS_SERVICE } from '@app/common/constants/services';
+import { ReservationsRepository } from './reservations.repository';
 
 @Module({
   imports: [
@@ -52,6 +52,7 @@ import { AUTH_SERVICE, PAYMENTS_SERVICE } from '@app/common/constants/services';
     LoggerModule,
   ],
   controllers: [ReservationsController],
-  providers: [ReservationsService, ReservationRepository],
+  providers: [ReservationsService, ReservationsRepository],
+  exports: [ReservationsService],
 })
 export class ReservationsModule {}

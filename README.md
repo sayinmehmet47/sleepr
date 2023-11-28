@@ -16,8 +16,5 @@
 
 take a look on the authentication expirations
 
-- still struggling with this error
-
-```
-sleepr-reservations-1   | [Nest] 1163  - 11/12/2023, 5:48:21 PM   ERROR [ExceptionHandler] Nest can't resolve dependencies of the ReservationRepository (?, EntityManager). Please make sure that the argument ReservationModel at index [0] is available in the ReservationsModule context.
-```
+- to get refresh token from the google api
+  https://www.udemy.com/course/nestjs-microservices-build-deploy-a-scaleable-backend/learn/lecture/37165868#questions
