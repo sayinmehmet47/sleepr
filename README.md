@@ -1,5 +1,3 @@
-
-
 - nest new project-name
 - nest generate library common(to share code between apps, it is monorepo)
 - for validation joi (pnpm i joi)
@@ -16,4 +14,7 @@
 
 ## Issues
 
-take a look on the authentication expirations
+- to get refresh token from the google api
+  https://www.udemy.com/course/nestjs-microservices-build-deploy-a-scaleable-backend/learn/lecture/37165868#questions
+
+- take a look on the mail not send issue

@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { ReservationsService } from './reservations.service';
 import { CreateReservationDto } from './reservations/dto/create-reservation.dto';
-import { CurrentUser, JwtAuthGuard, Roles, UserDto } from '@app/common';
+import { CurrentUser, JwtAuthGuard, Roles, User } from '@app/common';
 
 @Controller('reservations')
 export class ReservationsController {
@@ -19,7 +19,7 @@ export class ReservationsController {
   @Post()
   async create(
     @Body() createReservationDto: CreateReservationDto,
-    @CurrentUser() user: UserDto,
+    @CurrentUser() user: User,
   ) {
     const _user = await this.reservationsService.create(
       createReservationDto,
@@ -38,13 +38,13 @@ export class ReservationsController {
   @UseGuards(JwtAuthGuard)
   @Get(':id')
   async findOne(@Param('id') id: string) {
-    return await this.reservationsService.findOne(id);
+    return await this.reservationsService.findOne(+id);
   }
 
   @UseGuards(JwtAuthGuard)
   @Delete(':id')
   @Roles('Admin')
   async remove(@Param('id') id: string) {
-    return await this.reservationsService.remove(id);
+    return await this.reservationsService.remove(+id);
   }
 }
