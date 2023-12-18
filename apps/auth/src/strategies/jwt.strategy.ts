@@ -22,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   async validate({ userId }: TokenPayload) {
     try {
-      return await this.usersService.getUser({ _id: userId });
+      return await this.usersService.getUser({ id: userId });
     } catch (error) {
       throw new UnauthorizedException(error);
     }
